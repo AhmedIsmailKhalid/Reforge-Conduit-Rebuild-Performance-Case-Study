@@ -9,7 +9,7 @@ export default function NotFoundPage() {
         <p className="text-8xl font-bold text-slate-200 dark:text-slate-700 mb-4">
           404
         </p>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-400 (not 500) mb-2">
           Page not found
         </h1>
         <p className="text-slate-500 dark:text-slate-400 mb-8">

@@ -1,26 +1,54 @@
-export function ArticleCardSkeleton() {
+interface ArticleCardSkeletonProps {
+  variant?: 'featured' | 'secondary' | 'compact'
+}
+
+export function ArticleCardSkeleton({ variant = 'secondary' }: ArticleCardSkeletonProps) {
+  if (variant === 'featured') {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8 border-b border-[var(--color-border)] dark:border-[var(--color-dark-border)] animate-pulse">
+        <div className="flex flex-col gap-6">
+          <div className="space-y-3">
+            <div className="h-3 w-16 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+            <div className="h-10 w-full rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+            <div className="h-10 w-3/4 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+            <div className="h-4 w-full rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+            <div className="h-4 w-2/3 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-7 h-7 rounded-full bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+            <div className="h-3 w-24 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+          </div>
+        </div>
+        <div className="hidden md:block rounded-2xl bg-[var(--color-surface-alt)] dark:bg-[var(--color-dark-surface-alt)] min-h-64" />
+      </div>
+    )
+  }
+
+  if (variant === 'compact') {
+    return (
+      <div className="flex items-start gap-4 py-4 border-b border-[var(--color-border)] dark:border-[var(--color-dark-border)] animate-pulse">
+        <div className="flex-1 space-y-2">
+          <div className="h-3 w-20 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+          <div className="h-4 w-full rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+          <div className="h-4 w-2/3 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+        </div>
+        <div className="h-6 w-10 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+      </div>
+    )
+  }
+
   return (
-    <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-6 animate-pulse">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-9 h-9 rounded-full bg-slate-200 dark:bg-slate-700" />
-        <div className="space-y-1.5">
-          <div className="h-3.5 w-24 rounded bg-slate-200 dark:bg-slate-700" />
-          <div className="h-3 w-16 rounded bg-slate-200 dark:bg-slate-700" />
-        </div>
-        <div className="ml-auto h-7 w-16 rounded-lg bg-slate-200 dark:bg-slate-700" />
+    <div className="flex flex-col gap-3 py-6 border-b border-[var(--color-border)] dark:border-[var(--color-dark-border)] animate-pulse">
+      <div className="flex items-center gap-2.5">
+        <div className="w-7 h-7 rounded-full bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+        <div className="h-3 w-32 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
       </div>
-      <div className="space-y-2 mb-4">
-        <div className="h-5 w-3/4 rounded bg-slate-200 dark:bg-slate-700" />
-        <div className="h-4 w-full rounded bg-slate-200 dark:bg-slate-700" />
-        <div className="h-4 w-2/3 rounded bg-slate-200 dark:bg-slate-700" />
+      <div className="space-y-2">
+        <div className="h-6 w-3/4 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+        <div className="h-4 w-full rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
+        <div className="h-4 w-2/3 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
       </div>
-      <div className="flex items-center justify-between">
-        <div className="h-3 w-20 rounded bg-slate-200 dark:bg-slate-700" />
-        <div className="flex gap-2">
-          <div className="h-5 w-12 rounded-full bg-slate-200 dark:bg-slate-700" />
-          <div className="h-5 w-12 rounded-full bg-slate-200 dark:bg-slate-700" />
-        </div>
-      </div>
+      <div className="h-3 w-16 rounded bg-[var(--color-surface-raised)] dark:bg-[var(--color-dark-surface-raised)]" />
     </div>
   )
 }

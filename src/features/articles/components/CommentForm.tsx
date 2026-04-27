@@ -47,7 +47,7 @@ export function CommentForm({ slug }: CommentFormProps) {
           value={body}
           onChange={(e) => { setBody(e.target.value) }}
           placeholder="Write a comment..."
-          className="w-full bg-transparent text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 resize-none focus:outline-none"
+          className="w-full bg-transparent text-sm text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 resize-none focus:outline-none"
         />
       </div>
       <div className="px-4 py-3 bg-slate-50 dark:bg-slate-700/50 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">

@@ -1,4 +1,6 @@
 import { useAuthStore } from '@/store/authStore'
+import { Link } from 'react-router-dom'
+import { ROUTES } from '@/router/routes'
 
 export type FeedTab = 'global' | 'personal' | 'tag'
 
@@ -11,17 +13,14 @@ interface FeedTabsProps {
 export function FeedTabs({ activeTab, activeTag, onTabChange }: FeedTabsProps) {
   const { token } = useAuthStore()
 
-  const tabClass = (tab: FeedTab) =>
-    `px-4 py-2.5 text-sm font-medium border-b-2 transition whitespace-nowrap
-      ${activeTab === tab
-        ? 'border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400'
-        : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
-      }
-    `
+  const tabStyle = (tab: FeedTab) => ({
+    color: activeTab === tab ? 'var(--text-primary)' : 'var(--text-muted)',
+  })
 
   return (
     <div
-      className="flex border-b border-slate-200 dark:border-slate-700 overflow-x-auto"
+      className="flex gap-6"
+      style={{ borderBottom: '1px solid rgba(148,163,184,0.08)' }}
       role="tablist"
       aria-label="Feed tabs"
     >
@@ -30,27 +29,61 @@ export function FeedTabs({ activeTab, activeTag, onTabChange }: FeedTabsProps) {
           role="tab"
           aria-selected={activeTab === 'personal'}
           onClick={() => { onTabChange('personal') }}
-          className={tabClass('personal')}
+          className="relative pb-3 text-sm font-semibold transition-colors duration-150 outline-none"
+          style={tabStyle('personal')}
         >
           Your Feed
+          {activeTab === 'personal' && (
+            <span
+              className="absolute bottom-0 left-0 right-0 rounded-full"
+              style={{ height: '2.5px', background: 'var(--color-accent)' }}
+            />
+          )}
         </button>
       )}
+
       <button
         role="tab"
         aria-selected={activeTab === 'global'}
         onClick={() => { onTabChange('global') }}
-        className={tabClass('global')}
+        className="relative pb-3 text-sm font-semibold transition-colors duration-150"
+        style={tabStyle('global')}
       >
         Global Feed
+        {activeTab === 'global' && (
+          <span
+            className="absolute bottom-0 left-0 right-0 rounded-full"
+            style={{ height: '2.5px', background: 'var(--color-accent)' }}
+          />
+        )}
       </button>
+
       {activeTab === 'tag' && activeTag && (
         <button
           role="tab"
           aria-selected={true}
-          className={tabClass('tag')}
+          className="relative pb-3 text-sm font-semibold"
+          style={{ color: 'var(--text-primary)' }}
         >
-          #{activeTag}
+          <span style={{ color: 'var(--color-accent)' }}>#</span>
+          {activeTag}
+          <span
+            className="absolute bottom-0 left-0 right-0 rounded-full"
+            style={{ height: '2.5px', background: 'var(--color-accent)' }}
+          />
         </button>
+      )}
+
+      {!token && (
+        <div className="ml-auto pb-3 flex items-center">
+          <Link
+            to={ROUTES.LOGIN}
+            className="text-xs font-medium transition-colors duration-150 hover:underline"
+            style={{ color: 'var(--text-muted)' }}
+          >
+            Sign in to see your feed
+          </Link>
+        </div>
       )}
     </div>
   )

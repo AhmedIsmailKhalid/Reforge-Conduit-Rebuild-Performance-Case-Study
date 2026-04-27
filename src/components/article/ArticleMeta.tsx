@@ -37,7 +37,7 @@ export function ArticleMeta({ article }: ArticleMetaProps) {
         <div>
           <Link
             to={profilePath}
-            className="block text-sm font-medium text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 transition"
+            className="block text-sm font-medium text-slate-900 dark:text-slate-400 (not 500) hover:text-blue-600 dark:hover:text-blue-400 transition"
           >
             {article.author.username}
           </Link>

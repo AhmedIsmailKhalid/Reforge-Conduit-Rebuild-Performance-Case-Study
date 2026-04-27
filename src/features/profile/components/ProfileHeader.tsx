@@ -27,7 +27,7 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
           </div>
         )}
 
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-400 (not 500) mb-2">
           {profile.username}
         </h1>
 

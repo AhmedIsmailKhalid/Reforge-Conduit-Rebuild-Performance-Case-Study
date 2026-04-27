@@ -11,7 +11,7 @@ export function CommentSection({ slug }: CommentSectionProps) {
 
   return (
     <section aria-label="Comments" className="space-y-4">
-      <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">
+      <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-400 (not 500)">
         Comments
       </h2>
 

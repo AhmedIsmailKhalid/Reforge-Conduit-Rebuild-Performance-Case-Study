@@ -24,7 +24,7 @@ export function LoginForm() {
     <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-400 (not 500)">
             Sign in
           </h1>
           <p className="mt-2 text-slate-500 dark:text-slate-400">
@@ -64,7 +64,7 @@ export function LoginForm() {
               type="email"
               autoComplete="email"
               {...register('email')}
-              className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
               placeholder="you@example.com"
             />
             {errors.email && (
@@ -86,7 +86,7 @@ export function LoginForm() {
               type="password"
               autoComplete="current-password"
               {...register('password')}
-              className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
               placeholder="••••••••"
             />
             {errors.password && (

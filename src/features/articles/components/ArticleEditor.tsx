@@ -62,7 +62,7 @@ export function ArticleEditor({ existingArticle }: ArticleEditorProps) {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-8">
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-400 (not 500) mb-8">
         {isEditing ? 'Edit article' : 'New article'}
       </h1>
 
@@ -92,7 +92,7 @@ export function ArticleEditor({ existingArticle }: ArticleEditorProps) {
             type="text"
             {...register('title')}
             placeholder="Article title"
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
           />
           {errors.title && (
             <p className="mt-1 text-sm text-red-600 dark:text-red-400">
@@ -113,7 +113,7 @@ export function ArticleEditor({ existingArticle }: ArticleEditorProps) {
             type="text"
             {...register('description')}
             placeholder="A short description of the article"
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
           />
           {errors.description && (
             <p className="mt-1 text-sm text-red-600 dark:text-red-400">
@@ -134,7 +134,7 @@ export function ArticleEditor({ existingArticle }: ArticleEditorProps) {
             rows={12}
             {...register('body')}
             placeholder="Write your article in markdown..."
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-y font-mono text-sm"
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-y font-mono text-sm"
           />
           {errors.body && (
             <p className="mt-1 text-sm text-red-600 dark:text-red-400">
@@ -156,7 +156,7 @@ export function ArticleEditor({ existingArticle }: ArticleEditorProps) {
             type="text"
             {...register('tagList')}
             placeholder="react, typescript, webdev"
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
           />
         </div>
 

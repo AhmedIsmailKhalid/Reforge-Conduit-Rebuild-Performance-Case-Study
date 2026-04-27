@@ -34,13 +34,13 @@ export function FavoriteButton({
       disabled={isPending}
       aria-label={favorited ? 'Remove from favorites' : 'Add to favorites'}
       aria-pressed={favorited}
-      className={`inline-flex items-center gap-1.5 rounded-lg border transition font-medium text-sm
+      className={`inline-flex items-center gap-1.5 rounded-lg transition-all duration-150 font-medium text-sm
         ${favorited
-          ? 'bg-blue-600 border-blue-600 text-white hover:bg-blue-700 hover:border-blue-700'
-          : 'bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-400 hover:border-blue-500 hover:text-blue-600'
+          ? 'bg-[var(--color-accent)] border-[var(--color-accent)] text-white hover:opacity-90'
+          : 'bg-transparent border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:bg-[var(--color-surface-raised)]'
         }
         ${compact ? 'px-2 py-1 text-xs' : 'px-3 py-1.5'}
-        ${isPending ? 'opacity-60 cursor-not-allowed' : ''}
+        ${isPending ? 'opacity-50 cursor-not-allowed' : ''}
       `}
     >
       <svg

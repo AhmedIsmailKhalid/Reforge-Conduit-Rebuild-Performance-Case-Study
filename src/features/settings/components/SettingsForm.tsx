@@ -79,7 +79,7 @@ export function SettingsForm() {
 
   return (
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-8">
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-400 (not 500) mb-8">
         Settings
       </h1>
 
@@ -118,7 +118,7 @@ export function SettingsForm() {
             type="url"
             {...register('image')}
             placeholder="https://example.com/avatar.jpg"
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
           />
           {errors.image && (
             <p className="mt-1 text-sm text-red-600 dark:text-red-400">
@@ -138,7 +138,7 @@ export function SettingsForm() {
             id="username"
             type="text"
             {...register('username')}
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
           />
           {errors.username && (
             <p className="mt-1 text-sm text-red-600 dark:text-red-400">
@@ -159,7 +159,7 @@ export function SettingsForm() {
             rows={4}
             {...register('bio')}
             placeholder="A short bio about yourself"
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
           />
           {errors.bio && (
             <p className="mt-1 text-sm text-red-600 dark:text-red-400">
@@ -179,7 +179,7 @@ export function SettingsForm() {
             id="email"
             type="email"
             {...register('email')}
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
           />
           {errors.email && (
             <p className="mt-1 text-sm text-red-600 dark:text-red-400">
@@ -201,7 +201,7 @@ export function SettingsForm() {
             type="password"
             autoComplete="new-password"
             {...register('password')}
-            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+            className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
           />
           {errors.password && (
             <p className="mt-1 text-sm text-red-600 dark:text-red-400">
