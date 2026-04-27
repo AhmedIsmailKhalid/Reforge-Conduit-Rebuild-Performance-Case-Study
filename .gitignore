@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# Version History
+Version History.MD
+
+# Node Modules
+node_modules
