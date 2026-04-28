@@ -18,18 +18,18 @@ function ThemeToggle() {
     <button
       onClick={cycle}
       aria-label={`Switch theme, current: ${theme}`}
-      className="w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-150"
+      className="w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-150 shrink-0"
       style={{
         color: 'var(--text-muted)',
         background: 'transparent',
         border: 'none',
         outline: 'none',
       }}
-      onMouseEnter={(e) => {
+      onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.currentTarget.style.color = 'var(--text-secondary)'
         e.currentTarget.style.background = 'var(--surface-raised)'
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.currentTarget.style.color = 'var(--text-muted)'
         e.currentTarget.style.background = 'transparent'
       }}
@@ -70,28 +70,36 @@ export function Navbar() {
       }}
     >
       <nav
-        className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between gap-8"
+        className="max-w-6xl mx-auto px-4 md:px-6 h-14 flex items-center justify-between gap-4"
         aria-label="Main navigation"
       >
         <Link
           to={ROUTES.HOME}
-          className="font-serif text-xl font-bold tracking-tight transition-colors duration-150 shrink-0"
+          className="font-serif text-lg md:text-xl font-bold tracking-tight transition-colors duration-150 shrink-0"
           style={{ color: 'var(--text-primary)' }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-text)' }}
-          onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-primary)' }}
+          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+            e.currentTarget.style.color = 'var(--accent-text)'
+          }}
+          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+            e.currentTarget.style.color = 'var(--text-primary)'
+          }}
         >
           Reforge
         </Link>
 
-        <ul className="flex items-center gap-1" role="list">
-          <li>
+        <ul className="flex items-center gap-0.5 md:gap-1 overflow-x-auto" role="list">
+          <li className="hidden sm:block">
             <NavLink
               to={ROUTES.HOME}
               end
-              className="text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-150 block"
+              className="text-sm font-medium px-2 md:px-3 py-1.5 rounded-lg transition-all duration-150 block whitespace-nowrap"
               style={navLinkStyle}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--surface-raised)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
+              onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.currentTarget.style.background = 'var(--surface-raised)'
+              }}
+              onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.currentTarget.style.background = 'transparent'
+              }}
             >
               Home
             </NavLink>
@@ -102,10 +110,14 @@ export function Navbar() {
               <li>
                 <NavLink
                   to={ROUTES.LOGIN}
-                  className="text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-150 block"
+                  className="text-sm font-medium px-2 md:px-3 py-1.5 rounded-lg transition-all duration-150 block whitespace-nowrap"
                   style={navLinkStyle}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--surface-raised)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
+                  onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.background = 'var(--surface-raised)'
+                  }}
+                  onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.background = 'transparent'
+                  }}
                 >
                   Sign in
                 </NavLink>
@@ -113,10 +125,14 @@ export function Navbar() {
               <li className="ml-1">
                 <NavLink
                   to={ROUTES.REGISTER}
-                  className="text-sm font-bold px-4 py-1.5 rounded-lg text-white transition-all duration-150"
+                  className="text-sm font-bold px-3 py-1.5 rounded-lg text-white transition-all duration-150 whitespace-nowrap"
                   style={{ background: 'var(--accent-bg)' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--accent-bg-hover)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--accent-bg)' }}
+                  onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.background = 'var(--accent-bg-hover)'
+                  }}
+                  onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.background = 'var(--accent-bg)'
+                  }}
                 >
                   Sign up
                 </NavLink>
@@ -127,10 +143,14 @@ export function Navbar() {
               <li>
                 <NavLink
                   to={ROUTES.EDITOR_NEW}
-                  className="text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-150 block"
+                  className="text-sm font-medium px-2 md:px-3 py-1.5 rounded-lg transition-all duration-150 block whitespace-nowrap"
                   style={navLinkStyle}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--surface-raised)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
+                  onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.background = 'var(--surface-raised)'
+                  }}
+                  onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.background = 'transparent'
+                  }}
                 >
                   Write
                 </NavLink>
@@ -140,21 +160,25 @@ export function Navbar() {
                 <li>
                   <NavLink
                     to={ROUTES.PROFILE.replace(':username', currentUser.username)}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-lg transition-all duration-150 text-sm font-medium"
+                    className="flex items-center gap-1.5 px-2 md:px-3 py-1.5 rounded-lg transition-all duration-150 text-sm font-medium whitespace-nowrap"
                     style={{ color: 'var(--text-secondary)' }}
-                    onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--surface-raised)' }}
-                    onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
+                    onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                      e.currentTarget.style.background = 'var(--surface-raised)'
+                    }}
+                    onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                      e.currentTarget.style.background = 'transparent'
+                    }}
                   >
                     {currentUser.image ? (
                       <img
                         src={currentUser.image}
                         alt={currentUser.username}
-                        className="w-6 h-6 rounded-full object-cover"
+                        className="w-6 h-6 rounded-full object-cover shrink-0"
                         style={{ boxShadow: '0 0 0 2px var(--color-accent-light)' }}
                       />
                     ) : (
                       <div
-                        className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
+                        className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
                         style={{
                           background: 'var(--color-accent-light)',
                           color: 'var(--color-accent-muted)',
@@ -163,18 +187,22 @@ export function Navbar() {
                         {currentUser.username[0]?.toUpperCase()}
                       </div>
                     )}
-                    <span>{currentUser.username}</span>
+                    <span className="hidden sm:inline">{currentUser.username}</span>
                   </NavLink>
                 </li>
               )}
 
-              <li>
+              <li className="hidden sm:block">
                 <NavLink
                   to={ROUTES.SETTINGS}
-                  className="text-sm font-medium px-3 py-1.5 rounded-lg transition-all duration-150 block"
+                  className="text-sm font-medium px-2 md:px-3 py-1.5 rounded-lg transition-all duration-150 block whitespace-nowrap"
                   style={navLinkStyle}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--surface-raised)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
+                  onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.background = 'var(--surface-raised)'
+                  }}
+                  onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.currentTarget.style.background = 'transparent'
+                  }}
                 >
                   Settings
                 </NavLink>
@@ -183,13 +211,13 @@ export function Navbar() {
               <li>
                 <button
                   onClick={handleLogout}
-                  className="px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-150"
+                  className="px-2 md:px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-150 whitespace-nowrap"
                   style={{ color: 'var(--text-muted)' }}
-                  onMouseEnter={(e) => {
+                  onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
                     e.currentTarget.style.color = '#ef4444'
                     e.currentTarget.style.background = 'var(--surface-raised)'
                   }}
-                  onMouseLeave={(e) => {
+                  onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
                     e.currentTarget.style.color = 'var(--text-muted)'
                     e.currentTarget.style.background = 'transparent'
                   }}
@@ -200,7 +228,7 @@ export function Navbar() {
             </>
           )}
 
-          <li className="ml-2 pl-2" style={{ borderLeft: '1px solid rgba(148,163,184,0.15)' }}>
+          <li className="ml-1 pl-1 md:ml-2 md:pl-2 shrink-0" style={{ borderLeft: '1px solid rgba(148,163,184,0.15)' }}>
             <ThemeToggle />
           </li>
         </ul>

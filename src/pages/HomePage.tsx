@@ -34,15 +34,15 @@ export default function HomePage() {
   return (
     <div>
       <div style={heroStyle}>
-        <div className="max-w-6xl mx-auto px-6 py-24 md:py-32">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-24 lg:py-32">
           <h1
-            className="font-serif text-6xl md:text-7xl font-bold leading-[1.05] tracking-tight mb-5"
+            className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-4 md:mb-5"
             style={{ color: 'var(--text-primary)' }}
           >
             Reforge
           </h1>
           <p
-            className="text-xl md:text-2xl max-w-lg leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl max-w-lg leading-relaxed"
             style={{ color: 'var(--text-secondary)' }}
           >
             Ideas worth sharing.{' '}
@@ -51,19 +51,23 @@ export default function HomePage() {
             </span>
           </p>
           {!token && (
-            <div className="flex items-center gap-3 mt-8">
+            <div className="flex items-center gap-3 mt-6 md:mt-8">
               <Link
                 to={ROUTES.REGISTER}
-                className="px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-150"
+                className="px-4 md:px-5 py-2 md:py-2.5 rounded-lg text-sm font-bold text-white transition-all duration-150"
                 style={{ background: 'var(--accent-bg)' }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--accent-hover)' }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--accent)' }}
+                onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  e.currentTarget.style.background = 'var(--accent-bg-hover)'
+                }}
+                onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                  e.currentTarget.style.background = 'var(--accent-bg)'
+                }}
               >
                 Start reading
               </Link>
               <Link
                 to={ROUTES.LOGIN}
-                className="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150"
+                className="px-4 md:px-5 py-2 md:py-2.5 rounded-lg text-sm font-semibold transition-all duration-150"
                 style={{
                   color: 'var(--text-secondary)',
                   border: '1px solid var(--border)',
@@ -77,10 +81,14 @@ export default function HomePage() {
       </div>
 
       <div style={{ background: 'var(--surface)' }}>
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-16">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-8 lg:gap-16">
             <GlobalFeed activeTag={activeTag} onTagClick={handleTagClick} />
-            <TagsSidebar onTagClick={handleTagClick} activeTag={activeTag} />
+            <div className="order-first lg:order-last">
+              <div className="lg:sticky lg:top-20">
+                <TagsSidebar onTagClick={handleTagClick} activeTag={activeTag} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

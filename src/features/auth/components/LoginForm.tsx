@@ -21,17 +21,18 @@ export function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 px-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex flex-col justify-center px-4 py-12" style={{ background: 'var(--surface)' }}>
+      <div className="w-full max-w-sm mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-400 (not 500)">
+          <h1 className="text-3xl font-bold" style={{ color: 'var(--text-primary)' }}>
             Sign in
           </h1>
-          <p className="mt-2 text-slate-500 dark:text-slate-400">
+          <p className="mt-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
             Don't have an account?{' '}
             <Link
               to={ROUTES.REGISTER}
-              className="text-blue-600 hover:text-blue-700 font-medium"
+              className="font-medium hover:underline"
+              style={{ color: 'var(--accent-text)' }}
             >
               Sign up
             </Link>
@@ -41,7 +42,12 @@ export function LoginForm() {
         {error && (
           <div
             role="alert"
-            className="mb-4 p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 text-sm"
+            className="mb-4 p-3 rounded-lg text-sm"
+            style={{
+              background: 'rgba(220,38,38,0.08)',
+              border: '1px solid rgba(220,38,38,0.2)',
+              color: '#dc2626',
+            }}
           >
             Invalid email or password. Please try again.
           </div>
@@ -50,12 +56,17 @@ export function LoginForm() {
         <form
           onSubmit={(e) => { void handleSubmit(onSubmit)(e) }}
           noValidate
-          className="space-y-4 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-8"
+          className="space-y-4 rounded-2xl p-6 md:p-8"
+          style={{
+            background: 'var(--surface)',
+            border: '1px solid var(--border)',
+          }}
         >
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+              className="block text-sm font-medium mb-1"
+              style={{ color: 'var(--text-secondary)' }}
             >
               Email
             </label>
@@ -64,11 +75,16 @@ export function LoginForm() {
               type="email"
               autoComplete="email"
               {...register('email')}
-              className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full px-3 py-2 rounded-lg text-sm transition-all duration-150"
+              style={{
+                border: '1px solid var(--border)',
+                background: 'var(--surface)',
+                color: 'var(--text-primary)',
+              }}
               placeholder="you@example.com"
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+              <p className="mt-1 text-xs" style={{ color: '#dc2626' }}>
                 {errors.email.message}
               </p>
             )}
@@ -77,7 +93,8 @@ export function LoginForm() {
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+              className="block text-sm font-medium mb-1"
+              style={{ color: 'var(--text-secondary)' }}
             >
               Password
             </label>
@@ -86,11 +103,16 @@ export function LoginForm() {
               type="password"
               autoComplete="current-password"
               {...register('password')}
-              className="w-full px-3 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-400 (not 500) placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+              className="w-full px-3 py-2 rounded-lg text-sm transition-all duration-150"
+              style={{
+                border: '1px solid var(--border)',
+                background: 'var(--surface)',
+                color: 'var(--text-primary)',
+              }}
               placeholder="••••••••"
             />
             {errors.password && (
-              <p className="mt-1 text-sm text-red-600 dark:text-red-400">
+              <p className="mt-1 text-xs" style={{ color: '#dc2626' }}>
                 {errors.password.message}
               </p>
             )}
@@ -99,7 +121,14 @@ export function LoginForm() {
           <button
             type="submit"
             disabled={isPending}
-            className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium rounded-lg transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full py-2.5 px-4 rounded-lg text-sm font-bold text-white transition-all duration-150 disabled:opacity-60"
+            style={{ background: isPending ? 'var(--accent-bg)' : 'var(--accent-bg)' }}
+            onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+              if (!isPending) e.currentTarget.style.background = 'var(--accent-bg-hover)'
+            }}
+            onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+              e.currentTarget.style.background = 'var(--accent-bg)'
+            }}
           >
             {isPending ? 'Signing in...' : 'Sign in'}
           </button>
