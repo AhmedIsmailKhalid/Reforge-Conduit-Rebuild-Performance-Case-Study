@@ -15,17 +15,35 @@ export function TagList({ tags, onTagClick, activeTag }: TagListProps) {
             <button
               onClick={() => { onTagClick(tag) }}
               aria-pressed={activeTag === tag}
-              className={`px-2.5 py-0.5 rounded-full text-xs font-medium transition
-                ${activeTag === tag
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-600'
+              className="px-2.5 py-0.5 rounded text-xs font-medium transition-all duration-150"
+              style={{
+                background: activeTag === tag ? 'var(--accent-bg)' : 'var(--surface-raised)',
+                color: activeTag === tag ? '#ffffff' : 'var(--text-secondary)',
+                border: 'none',
+              }}
+              onMouseEnter={(e) => {
+                if (activeTag !== tag) {
+                  e.currentTarget.style.background = 'rgba(217,119,6,0.07)'
+                  e.currentTarget.style.color = 'var(--accent-text)'
                 }
-              `}
+              }}
+              onMouseLeave={(e) => {
+                if (activeTag !== tag) {
+                  e.currentTarget.style.background = 'var(--surface-raised)'
+                  e.currentTarget.style.color = 'var(--text-secondary)'
+                }
+              }}
             >
               {tag}
             </button>
           ) : (
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400">
+            <span
+              className="px-2.5 py-0.5 rounded text-xs font-medium"
+              style={{
+                background: 'var(--surface-raised)',
+                color: 'var(--text-secondary)',
+              }}
+            >
               {tag}
             </span>
           )}

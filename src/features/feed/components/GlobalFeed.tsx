@@ -32,8 +32,14 @@ function EmptyPersonalFeed({ onSwitchToGlobal }: EmptyStateProps) {
       </p>
       <button
         onClick={onSwitchToGlobal}
-        className="px-5 py-2 rounded-lg text-sm font-semibold text-white transition"
-        style={{ background: 'var(--color-accent)' }}
+        className="px-5 py-2 rounded-lg text-sm font-bold text-white transition-all duration-150"
+        style={{ background: 'var(--accent-bg)' }}
+        onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+          e.currentTarget.style.background = 'var(--accent-bg-hover)'
+        }}
+        onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+          e.currentTarget.style.background = 'var(--accent-bg)'
+        }}
       >
         Explore articles
       </button>
@@ -58,8 +64,14 @@ function EmptyTagFeed({ onSwitchToGlobal }: EmptyStateProps) {
       </p>
       <button
         onClick={onSwitchToGlobal}
-        className="px-5 py-2 rounded-lg text-sm font-semibold text-white transition"
-        style={{ background: 'var(--color-accent)' }}
+        className="px-5 py-2 rounded-lg text-sm font-bold text-white transition-all duration-150"
+        style={{ background: 'var(--accent-bg)' }}
+        onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+          e.currentTarget.style.background = 'var(--accent-bg-hover)'
+        }}
+        onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+          e.currentTarget.style.background = 'var(--accent-bg)'
+        }}
       >
         Global Feed
       </button>
@@ -84,8 +96,14 @@ function EmptyGlobalFeed() {
       </p>
       <Link
         to={ROUTES.EDITOR_NEW}
-        className="px-5 py-2 rounded-lg text-sm font-semibold text-white transition inline-block"
-        style={{ background: 'var(--color-accent)' }}
+        className="px-5 py-2 rounded-lg text-sm font-bold text-white transition-all duration-150 inline-block"
+        style={{ background: 'var(--accent-bg)' }}
+        onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+          e.currentTarget.style.background = 'var(--accent-bg-hover)'
+        }}
+        onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+          e.currentTarget.style.background = 'var(--accent-bg)'
+        }}
       >
         Write an article
       </Link>
@@ -199,8 +217,11 @@ export function GlobalFeed({ activeTag, onTagClick }: GlobalFeedProps) {
         {compact.length > 0 && (
           <div className="mt-2">
             <p
-              className="text-xs font-semibold uppercase tracking-widest mb-2 pt-6 pb-2 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]"
-              style={{ color: 'var(--text-muted)' }}
+              className="text-xs font-semibold uppercase tracking-widest mb-2 pt-6 pb-2"
+              style={{
+                color: 'var(--text-muted)',
+                borderTop: '1px solid rgba(148,163,184,0.08)',
+              }}
             >
               More articles
             </p>

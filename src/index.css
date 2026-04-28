@@ -18,7 +18,7 @@
 
   --color-text-primary: #0f172a;
   --color-text-secondary: #475569;
-  --color-text-muted: #94a3b8;
+  --color-text-muted: #64748b;
 
   --color-dark-surface: #1e293b;
   --color-dark-surface-alt: #263040;
@@ -27,7 +27,7 @@
   --color-dark-border-strong: #3d5068;
   --color-dark-text-primary: #f1f5f9;
   --color-dark-text-secondary: #cbd5e1;
-  --color-dark-text-muted: #64748b;
+  --color-dark-text-muted: #94a3b8;
 }
 
 :root {
@@ -35,12 +35,15 @@
 
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-muted: #64748b;
   --surface: #f8fafc;
   --surface-alt: #f1f5f9;
   --surface-raised: #e2e8f0;
   --border: #e2e8f0;
   --border-strong: #cbd5e1;
+  --accent-text: #b45309;
+  --accent-bg: #b45309;
+  --accent-bg-hover: #92400e;
   --featured-placeholder-bg: linear-gradient(145deg, #f1f5f9 0%, #e8edf3 50%, #dde4ec 100%);
   --featured-placeholder-overlay: rgba(0, 0, 0, 0.02);
 }
@@ -49,12 +52,15 @@
   :root {
     --text-primary: #f1f5f9;
     --text-secondary: #cbd5e1;
-    --text-muted: #64748b;
+    --text-muted: #94a3b8;
     --surface: #1e293b;
     --surface-alt: #263040;
     --surface-raised: #2d3d50;
     --border: #2d3d50;
     --border-strong: #3d5068;
+    --accent-text: #fbbf24;
+    --accent-bg: #d97706;
+    --accent-bg-hover: #b45309;
     --featured-placeholder-bg: linear-gradient(145deg, #1e293b 0%, #243044 50%, #263652 100%);
     --featured-placeholder-overlay: rgba(0, 0, 0, 0.25);
   }
@@ -63,12 +69,15 @@
 .dark {
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
-  --text-muted: #64748b;
+  --text-muted: #94a3b8;
   --surface: #1e293b;
   --surface-alt: #263040;
   --surface-raised: #2d3d50;
   --border: #2d3d50;
   --border-strong: #3d5068;
+  --accent-text: #fbbf24;
+  --accent-bg: #d97706;
+  --accent-bg-hover: #b45309;
   --featured-placeholder-bg: linear-gradient(145deg, #1e293b 0%, #243044 50%, #263652 100%);
   --featured-placeholder-overlay: rgba(0, 0, 0, 0.25);
 }
@@ -88,7 +97,7 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--accent-text);
   outline-offset: 2px;
 }
 
@@ -119,7 +128,7 @@ body {
 }
 
 .prose a {
-  color: var(--color-accent);
+  color: var(--accent-text);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -147,7 +156,7 @@ body {
 }
 
 .prose blockquote {
-  border-left: 3px solid var(--color-accent);
+  border-left: 3px solid var(--accent-text);
   padding-left: 1.25rem;
   color: var(--text-secondary);
   font-style: italic;

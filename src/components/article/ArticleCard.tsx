@@ -51,8 +51,12 @@ function AuthorRow({ article }: { article: ApiArticle }) {
           to={profilePath}
           className="font-medium transition-colors duration-150"
           style={{ color: 'var(--text-secondary)' }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)' }}
-          onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)' }}
+          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+            e.currentTarget.style.color = 'var(--accent-text)'
+          }}
+          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+            e.currentTarget.style.color = 'var(--text-secondary)'
+          }}
         >
           {article.author.username}
         </Link>
@@ -87,7 +91,7 @@ function FeaturedImagePlaceholder({ title }: { title: string }) {
           style={{
             fontSize: '8rem',
             color: 'var(--border-strong)',
-            opacity: 0.2,
+            opacity: 0.15,
           }}
         >
           {letter}
@@ -110,7 +114,7 @@ function FeaturedCard({ article, onTagClick, activeTag }: Omit<ArticleCardProps,
           <span
             className="inline-block text-xs font-bold uppercase mb-4"
             style={{
-              color: 'var(--color-accent)',
+              color: 'var(--accent-text)',
               letterSpacing: '0.22em',
             }}
           >
@@ -119,12 +123,13 @@ function FeaturedCard({ article, onTagClick, activeTag }: Omit<ArticleCardProps,
           <Link to={articlePath}>
             <h2
               className="font-serif text-3xl md:text-4xl leading-tight transition-colors duration-150 mb-3"
-              style={{
-                color: 'var(--text-primary)',
-                fontWeight: 800,
+              style={{ color: 'var(--text-primary)', fontWeight: 800 }}
+              onMouseEnter={(e: React.MouseEvent<HTMLHeadingElement>) => {
+                e.currentTarget.style.color = 'var(--accent-text)'
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-primary)' }}
+              onMouseLeave={(e: React.MouseEvent<HTMLHeadingElement>) => {
+                e.currentTarget.style.color = 'var(--text-primary)'
+              }}
             >
               {article.title}
             </h2>
@@ -165,12 +170,12 @@ function SecondaryCard({ article, onTagClick, activeTag }: Omit<ArticleCardProps
     <article
       className="group flex flex-col gap-3 py-6 rounded-lg px-2 -mx-2 transition-all duration-150"
       style={{ borderBottom: '1px solid rgba(148,163,184,0.10)' }}
-      onMouseEnter={(e) => {
+      onMouseEnter={(e: React.MouseEvent<HTMLElement>) => {
         e.currentTarget.style.background = 'var(--surface-alt)'
         e.currentTarget.style.paddingLeft = '12px'
         e.currentTarget.style.paddingRight = '12px'
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={(e: React.MouseEvent<HTMLElement>) => {
         e.currentTarget.style.background = 'transparent'
         e.currentTarget.style.paddingLeft = '8px'
         e.currentTarget.style.paddingRight = '8px'
@@ -181,8 +186,12 @@ function SecondaryCard({ article, onTagClick, activeTag }: Omit<ArticleCardProps
         <h2
           className="font-serif text-xl font-bold leading-snug transition-colors duration-150"
           style={{ color: 'var(--text-primary)' }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)' }}
-          onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-primary)' }}
+          onMouseEnter={(e: React.MouseEvent<HTMLHeadingElement>) => {
+            e.currentTarget.style.color = 'var(--accent-text)'
+          }}
+          onMouseLeave={(e: React.MouseEvent<HTMLHeadingElement>) => {
+            e.currentTarget.style.color = 'var(--text-primary)'
+          }}
         >
           {article.title}
         </h2>
@@ -214,8 +223,12 @@ function CompactCard({ article }: Omit<ArticleCardProps, 'variant'>) {
     <article
       className="group flex items-start gap-4 py-4 rounded-lg px-2 -mx-2 transition-all duration-150"
       style={{ borderBottom: '1px solid rgba(148,163,184,0.08)' }}
-      onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--surface-alt)' }}
-      onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
+      onMouseEnter={(e: React.MouseEvent<HTMLElement>) => {
+        e.currentTarget.style.background = 'var(--surface-alt)'
+      }}
+      onMouseLeave={(e: React.MouseEvent<HTMLElement>) => {
+        e.currentTarget.style.background = 'transparent'
+      }}
     >
       <div className="flex-1 min-w-0">
         <div
@@ -225,8 +238,12 @@ function CompactCard({ article }: Omit<ArticleCardProps, 'variant'>) {
           <Link
             to={profilePath}
             className="font-medium transition-colors duration-150"
-            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)' }}
+            onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+              e.currentTarget.style.color = 'var(--accent-text)'
+            }}
+            onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+              e.currentTarget.style.color = 'var(--text-muted)'
+            }}
           >
             {article.author.username}
           </Link>
@@ -237,8 +254,12 @@ function CompactCard({ article }: Omit<ArticleCardProps, 'variant'>) {
           <h3
             className="font-semibold text-sm leading-snug transition-colors duration-150 line-clamp-2"
             style={{ color: 'var(--text-primary)' }}
-            onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)' }}
-            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-primary)' }}
+            onMouseEnter={(e: React.MouseEvent<HTMLHeadingElement>) => {
+              e.currentTarget.style.color = 'var(--accent-text)'
+            }}
+            onMouseLeave={(e: React.MouseEvent<HTMLHeadingElement>) => {
+              e.currentTarget.style.color = 'var(--text-primary)'
+            }}
           >
             {article.title}
           </h3>

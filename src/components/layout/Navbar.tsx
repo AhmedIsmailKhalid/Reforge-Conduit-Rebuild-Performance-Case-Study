@@ -58,7 +58,7 @@ export function Navbar() {
   }
 
   const navLinkStyle = ({ isActive }: { isActive: boolean }) => ({
-    color: isActive ? 'var(--color-accent)' : 'var(--text-secondary)',
+    color: isActive ? 'var(--accent-text)' : 'var(--text-secondary)',
   })
 
   return (
@@ -77,7 +77,7 @@ export function Navbar() {
           to={ROUTES.HOME}
           className="font-serif text-xl font-bold tracking-tight transition-colors duration-150 shrink-0"
           style={{ color: 'var(--text-primary)' }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--color-accent)' }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-text)' }}
           onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-primary)' }}
         >
           Reforge
@@ -113,10 +113,10 @@ export function Navbar() {
               <li className="ml-1">
                 <NavLink
                   to={ROUTES.REGISTER}
-                  className="text-sm font-semibold px-4 py-1.5 rounded-lg text-white transition-all duration-150"
-                  style={{ background: 'var(--color-accent)' }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-accent-hover)' }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-accent)' }}
+                  className="text-sm font-bold px-4 py-1.5 rounded-lg text-white transition-all duration-150"
+                  style={{ background: 'var(--accent-bg)' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--accent-bg-hover)' }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--accent-bg)' }}
                 >
                   Sign up
                 </NavLink>

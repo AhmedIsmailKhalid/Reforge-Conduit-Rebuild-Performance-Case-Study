@@ -1,23 +1,37 @@
 import { Link } from 'react-router-dom'
 import { ROUTES } from '@/router/routes'
 import { PageContainer } from '@/components/layout/PageContainer'
+import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function NotFoundPage() {
+  usePageTitle('Page not found')
   return (
     <PageContainer>
       <div className="text-center py-24">
-        <p className="text-8xl font-bold text-slate-200 dark:text-slate-700 mb-4">
+        <p
+          className="text-8xl font-bold mb-4 select-none"
+          style={{ color: 'var(--surface-raised)' }}
+        >
           404
         </p>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-400 (not 500) mb-2">
+        <h1
+          className="text-2xl font-bold mb-2"
+          style={{ color: 'var(--text-primary)' }}
+        >
           Page not found
         </h1>
-        <p className="text-slate-500 dark:text-slate-400 mb-8">
+        <p
+          className="mb-8"
+          style={{ color: 'var(--text-muted)' }}
+        >
           The page you are looking for does not exist or has been moved.
         </p>
         <Link
           to={ROUTES.HOME}
-          className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition"
+          className="px-6 py-2.5 rounded-lg text-white font-medium transition-all duration-150 inline-block"
+          style={{ background: 'var(--color-accent)' }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--color-accent-hover)' }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--color-accent)' }}
         >
           Back to home
         </Link>

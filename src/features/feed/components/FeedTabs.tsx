@@ -14,72 +14,73 @@ export function FeedTabs({ activeTab, activeTag, onTabChange }: FeedTabsProps) {
   const { token } = useAuthStore()
 
   const tabStyle = (tab: FeedTab) => ({
-    color: activeTab === tab ? 'var(--text-primary)' : 'var(--text-muted)',
+    color: activeTab === tab ? 'var(--text-primary)' : 'var(--text-secondary)',
   })
 
   return (
-    <div
-      className="flex gap-6"
-      style={{ borderBottom: '1px solid rgba(148,163,184,0.08)' }}
-      role="tablist"
-      aria-label="Feed tabs"
-    >
-      {token && (
+    <div style={{ borderBottom: '1px solid rgba(148,163,184,0.08)' }}>
+      <div
+        className="flex gap-6"
+        role="tablist"
+        aria-label="Feed tabs"
+      >
+        {token && (
+          <button
+            role="tab"
+            aria-selected={activeTab === 'personal'}
+            onClick={() => { onTabChange('personal') }}
+            className="relative pb-3 text-sm font-semibold transition-colors duration-150 outline-none"
+            style={tabStyle('personal')}
+          >
+            Your Feed
+            {activeTab === 'personal' && (
+              <span
+                className="absolute bottom-0 left-0 right-0 rounded-full"
+                style={{ height: '2.5px', background: 'var(--accent-bg)' }}
+              />
+            )}
+          </button>
+        )}
+
         <button
           role="tab"
-          aria-selected={activeTab === 'personal'}
-          onClick={() => { onTabChange('personal') }}
+          aria-selected={activeTab === 'global'}
+          onClick={() => { onTabChange('global') }}
           className="relative pb-3 text-sm font-semibold transition-colors duration-150 outline-none"
-          style={tabStyle('personal')}
+          style={tabStyle('global')}
         >
-          Your Feed
-          {activeTab === 'personal' && (
+          Global Feed
+          {activeTab === 'global' && (
             <span
               className="absolute bottom-0 left-0 right-0 rounded-full"
-              style={{ height: '2.5px', background: 'var(--color-accent)' }}
+              style={{ height: '2.5px', background: 'var(--accent-bg)' }}
             />
           )}
         </button>
-      )}
 
-      <button
-        role="tab"
-        aria-selected={activeTab === 'global'}
-        onClick={() => { onTabChange('global') }}
-        className="relative pb-3 text-sm font-semibold transition-colors duration-150"
-        style={tabStyle('global')}
-      >
-        Global Feed
-        {activeTab === 'global' && (
-          <span
-            className="absolute bottom-0 left-0 right-0 rounded-full"
-            style={{ height: '2.5px', background: 'var(--color-accent)' }}
-          />
+        {activeTab === 'tag' && activeTag && (
+          <button
+            role="tab"
+            aria-selected={true}
+            className="relative pb-3 text-sm font-semibold outline-none"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            <span style={{ color: 'var(--accent-text)' }}>#</span>
+            {activeTag}
+            <span
+              className="absolute bottom-0 left-0 right-0 rounded-full"
+              style={{ height: '2.5px', background: 'var(--accent-bg)' }}
+            />
+          </button>
         )}
-      </button>
-
-      {activeTab === 'tag' && activeTag && (
-        <button
-          role="tab"
-          aria-selected={true}
-          className="relative pb-3 text-sm font-semibold"
-          style={{ color: 'var(--text-primary)' }}
-        >
-          <span style={{ color: 'var(--color-accent)' }}>#</span>
-          {activeTag}
-          <span
-            className="absolute bottom-0 left-0 right-0 rounded-full"
-            style={{ height: '2.5px', background: 'var(--color-accent)' }}
-          />
-        </button>
-      )}
+      </div>
 
       {!token && (
-        <div className="ml-auto pb-3 flex items-center">
+        <div className="pb-2 mt-1">
           <Link
             to={ROUTES.LOGIN}
             className="text-xs font-medium transition-colors duration-150 hover:underline"
-            style={{ color: 'var(--text-muted)' }}
+            style={{ color: 'var(--text-secondary)' }}
           >
             Sign in to see your feed
           </Link>

@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { GlobalFeed } from '@/features/feed/components/GlobalFeed'
 import { TagsSidebar } from '@/features/feed/components/TagsSidebar'
-import { PageContainer } from '@/components/layout/PageContainer'
 import { useAuthStore } from '@/store/authStore'
 import { useThemeStore } from '@/store/themeStore'
+import { usePageTitle } from '@/hooks/usePageTitle'
 import { ROUTES } from '@/router/routes'
 
 export default function HomePage() {
@@ -12,6 +12,8 @@ export default function HomePage() {
   const { token } = useAuthStore()
   const { resolvedTheme } = useThemeStore()
   const isDark = resolvedTheme() === 'dark'
+
+  usePageTitle()
 
   const handleTagClick = (tag: string) => {
     setActiveTag((prev) => (prev === tag ? undefined : tag))
@@ -53,13 +55,9 @@ export default function HomePage() {
               <Link
                 to={ROUTES.REGISTER}
                 className="px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all duration-150"
-                style={{ background: 'var(--color-accent)' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--color-accent-hover)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'var(--color-accent)'
-                }}
+                style={{ background: 'var(--accent-bg)' }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--accent-hover)' }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'var(--accent)' }}
               >
                 Start reading
               </Link>
@@ -79,16 +77,12 @@ export default function HomePage() {
       </div>
 
       <div style={{ background: 'var(--surface)' }}>
-        <PageContainer>
+        <div className="max-w-6xl mx-auto px-4 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-16">
             <GlobalFeed activeTag={activeTag} onTagClick={handleTagClick} />
-            <aside>
-              <div className="sticky top-20">
-                <TagsSidebar onTagClick={handleTagClick} activeTag={activeTag} />
-              </div>
-            </aside>
+            <TagsSidebar onTagClick={handleTagClick} activeTag={activeTag} />
           </div>
-        </PageContainer>
+        </div>
       </div>
     </div>
   )

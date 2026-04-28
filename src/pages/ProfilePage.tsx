@@ -4,6 +4,7 @@ import { useProfile } from '@/features/profile/hooks/useProfile'
 import { ProfileHeader } from '@/features/profile/components/ProfileHeader'
 import { ProfileArticles } from '@/features/profile/components/ProfileArticles'
 import { PageContainer } from '@/components/layout/PageContainer'
+import { usePageTitle } from '@/hooks/usePageTitle'
 import { ROUTES } from '@/router/routes'
 
 type ProfileTab = 'authored' | 'favorited'
@@ -13,28 +14,46 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<ProfileTab>('authored')
   const { data: profile, isLoading, isError } = useProfile(username ?? '')
 
-  const tabClass = (tab: ProfileTab) =>
-    `px-4 py-2.5 text-sm font-medium border-b-2 transition
-      ${activeTab === tab
-        ? 'border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400'
-        : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'
-      }
-    `
+  usePageTitle(profile ? `@${profile.username}` : undefined)
+
+  const tabStyle = (tab: ProfileTab) => ({
+    color: activeTab === tab ? 'var(--text-primary)' : 'var(--text-muted)',
+    borderBottom: activeTab === tab ? '2.5px solid var(--color-accent)' : '2.5px solid transparent',
+  })
 
   if (isLoading) {
     return (
       <div>
-        <div className="bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 py-12 px-4">
+        <div
+          className="border-b py-12 px-4"
+          style={{
+            background: 'var(--surface-alt)',
+            borderColor: 'rgba(148,163,184,0.12)',
+          }}
+        >
           <div className="max-w-4xl mx-auto text-center animate-pulse">
-            <div className="w-20 h-20 rounded-full bg-slate-300 dark:bg-slate-600 mx-auto mb-4" />
-            <div className="h-6 w-32 rounded bg-slate-300 dark:bg-slate-600 mx-auto mb-2" />
-            <div className="h-4 w-48 rounded bg-slate-300 dark:bg-slate-600 mx-auto" />
+            <div
+              className="w-20 h-20 rounded-full mx-auto mb-4"
+              style={{ background: 'var(--surface-raised)' }}
+            />
+            <div
+              className="h-6 w-32 rounded mx-auto mb-2"
+              style={{ background: 'var(--surface-raised)' }}
+            />
+            <div
+              className="h-4 w-48 rounded mx-auto"
+              style={{ background: 'var(--surface-raised)' }}
+            />
           </div>
         </div>
         <PageContainer>
           <div className="space-y-4">
             {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="h-32 rounded-2xl bg-slate-200 dark:bg-slate-700 animate-pulse" />
+              <div
+                key={i}
+                className="h-32 rounded-2xl animate-pulse"
+                style={{ background: 'var(--surface-raised)' }}
+              />
             ))}
           </div>
         </PageContainer>
@@ -46,10 +65,14 @@ export default function ProfilePage() {
     return (
       <PageContainer>
         <div className="text-center py-16">
-          <p className="text-slate-500 dark:text-slate-400 mb-4">
+          <p className="mb-4" style={{ color: 'var(--text-muted)' }}>
             Profile not found.
           </p>
-          <Link to={ROUTES.HOME} className="text-blue-600 hover:underline text-sm">
+          <Link
+            to={ROUTES.HOME}
+            className="text-sm hover:underline"
+            style={{ color: 'var(--color-accent)' }}
+          >
             Back to home
           </Link>
         </div>
@@ -62,7 +85,8 @@ export default function ProfilePage() {
       <ProfileHeader profile={profile} />
       <PageContainer className="max-w-4xl">
         <div
-          className="flex border-b border-slate-200 dark:border-slate-700 mb-6"
+          className="flex gap-6 mb-8"
+          style={{ borderBottom: '1px solid rgba(148,163,184,0.08)' }}
           role="tablist"
           aria-label="Profile tabs"
         >
@@ -70,7 +94,8 @@ export default function ProfilePage() {
             role="tab"
             aria-selected={activeTab === 'authored'}
             onClick={() => { setActiveTab('authored') }}
-            className={tabClass('authored')}
+            className="pb-3 text-sm font-semibold transition-colors duration-150 outline-none"
+            style={tabStyle('authored')}
           >
             My Articles
           </button>
@@ -78,7 +103,8 @@ export default function ProfilePage() {
             role="tab"
             aria-selected={activeTab === 'favorited'}
             onClick={() => { setActiveTab('favorited') }}
-            className={tabClass('favorited')}
+            className="pb-3 text-sm font-semibold transition-colors duration-150 outline-none"
+            style={tabStyle('favorited')}
           >
             Favorited Articles
           </button>
